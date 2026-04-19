@@ -7,7 +7,7 @@
   --muted: rgba(244, 248, 255, 0.82);
   --line: rgba(255, 255, 255, 0.16);
   --line-strong: rgba(255, 255, 255, 0.28);
-  --accent: #ffffff;
+  --accent: #ffc83a;
   --caseo: #f9a03f;
   --md: #ff3d35;
   --carrelage: #8b4d91;
@@ -26,7 +26,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  font-family: "League Spartan", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at 18% 18%, rgba(125, 207, 255, 0.18), transparent 26%),
@@ -170,14 +170,14 @@ a {
 .hero h1,
 .section h2 {
   margin: 0;
-  font-family: "League Spartan", sans-serif;
+  font-family: "Sora", sans-serif;
   font-weight: 800;
-  line-height: 1.03;
-  letter-spacing: -0.035em;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
   text-wrap: balance;
 }
 
@@ -219,7 +219,7 @@ a {
 }
 
 .button--primary {
-  color: var(--bg);
+  color: #122160;
   background: var(--accent);
 }
 
@@ -381,7 +381,7 @@ a {
   display: inline-block;
   margin-bottom: 1rem;
   color: var(--accent);
-  font-family: "League Spartan", sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
 }

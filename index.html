@@ -419,14 +419,38 @@
                 </label>
                 <label class="field field--full">
                   <span>Entit&eacute; souhait&eacute;e</span>
-                  <select name="entity">
-                    <option value="">Choisir une entit&eacute; ou le groupe</option>
-                    <option value="Fergy Holding">Fergy Holding</option>
-                    <option value="Cas&eacute;o">Cas&eacute;o</option>
-                    <option value="MD R&eacute;nov'">MD R&eacute;nov'</option>
-                    <option value="Carrelage et Bain">Carrelage et Bain</option>
-                    <option value="Pulsat">Pulsat</option>
-                  </select>
+                  <div class="custom-select" data-custom-select>
+                    <input type="hidden" name="entity" value="" />
+                    <button
+                      class="custom-select__trigger"
+                      type="button"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                    >
+                      <span class="custom-select__value">Choisir une entit&eacute; ou le groupe</span>
+                      <span class="custom-select__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="custom-select__menu" role="listbox" hidden>
+                      <button class="custom-select__option is-active" type="button" data-value="">
+                        Choisir une entit&eacute; ou le groupe
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Fergy Holding">
+                        Fergy Holding
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Cas&eacute;o">
+                        Cas&eacute;o
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="MD R&eacute;nov'">
+                        MD R&eacute;nov'
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Carrelage et Bain">
+                        Carrelage et Bain
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Pulsat">
+                        Pulsat
+                      </button>
+                    </div>
+                  </div>
                 </label>
                 <label class="field field--full">
                   <span>Message</span>

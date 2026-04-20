@@ -745,6 +745,10 @@ h2[id] {
   backdrop-filter: blur(12px);
 }
 
+.custom-select__menu[hidden] {
+  display: none;
+}
+
 .custom-select__option {
   width: 100%;
   padding: 0.9rem 1rem;

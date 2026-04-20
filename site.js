@@ -127,7 +127,8 @@ if (careerForm) {
     const lastName = String(formData.get("lastName") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const profileLink = String(formData.get("profileLink") || "").trim();
-    const consent = formData.get("consent") === "on";
+    const privacyAcknowledgement =
+      formData.get("privacyAcknowledgement") === "on";
 
     if (trapValue) {
       return;
@@ -149,9 +150,9 @@ if (careerForm) {
       return;
     }
 
-    if (!consent) {
+    if (!privacyAcknowledgement) {
       setFormStatus(
-        "Merci d'accepter le traitement des donn\u00E9es avant l'envoi.",
+        "Merci de confirmer la prise de connaissance des mentions l\u00E9gales avant l'envoi.",
         "error"
       );
       return;

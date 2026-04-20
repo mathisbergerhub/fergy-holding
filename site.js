@@ -40,8 +40,8 @@ if (careerForm) {
     const firstName = String(formData.get("firstName") || "").trim();
     const lastName = String(formData.get("lastName") || "").trim();
     const email = String(formData.get("email") || "").trim();
+    const profileLink = String(formData.get("profileLink") || "").trim();
     const consent = formData.get("consent") === "on";
-    const cv = formData.get("cv");
 
     if (trapValue) {
       return;
@@ -55,18 +55,11 @@ if (careerForm) {
       return;
     }
 
-    if (!(cv instanceof File) || cv.size === 0) {
-      setFormStatus("Merci d'ajouter un CV au format PDF.", "error");
-      return;
-    }
-
-    if (cv.type !== "application/pdf") {
-      setFormStatus("Le CV doit \u00EAtre envoy\u00E9 en PDF.", "error");
-      return;
-    }
-
-    if (cv.size > 5 * 1024 * 1024) {
-      setFormStatus("Le fichier d\u00E9passe la limite de 5 Mo.", "error");
+    if (profileLink && !/^https?:\/\//i.test(profileLink)) {
+      setFormStatus(
+        "Merci d'indiquer un lien complet commen\u00E7ant par https://",
+        "error"
+      );
       return;
     }
 

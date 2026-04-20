@@ -377,14 +377,12 @@
               <h2 id="application-title">Envoyer une candidature au groupe.</h2>
               <p>
                 Vous souhaitez rejoindre l'une des enseignes du groupe ou adresser
-                une candidature spontan&eacute;e &agrave; Fergy Holding ? D&eacute;posez votre CV
-                et quelques informations sur votre profil pour nous permettre
-                d'orienter votre demande.
+                une candidature spontan&eacute;e &agrave; Fergy Holding ? Partagez quelques
+                informations sur votre profil pour nous permettre d'orienter votre demande.
               </p>
               <p>
-                Le CV est demand&eacute; au format PDF afin de faciliter le traitement
-                des dossiers. Vous pouvez &eacute;galement pr&eacute;ciser l'entit&eacute; qui vous
-                int&eacute;resse et ajouter un message pour contextualiser votre recherche.
+                Vous pouvez pr&eacute;ciser l'entit&eacute; qui vous int&eacute;resse, ajouter un
+                message et joindre un lien vers votre CV ou votre profil LinkedIn.
               </p>
               <p class="application-note">
                 En validant le formulaire, le candidat accepte que les informations
@@ -439,8 +437,13 @@
                   ></textarea>
                 </label>
                 <label class="field field--full">
-                  <span>CV (PDF, 5 Mo max)</span>
-                  <input type="file" name="cv" accept="application/pdf" required />
+                  <span>Lien CV / LinkedIn</span>
+                  <input
+                    type="url"
+                    name="profileLink"
+                    placeholder="https://..."
+                    inputmode="url"
+                  />
                 </label>
                 <label class="field visually-hidden" aria-hidden="true">
                   <span>Site web</span>

@@ -574,6 +574,10 @@ h2[id] {
   gap: 1rem;
 }
 
+.application-copy h2 {
+  margin: 0;
+}
+
 .application-copy p {
   margin: 0;
   color: var(--muted);
@@ -790,15 +794,20 @@ h2[id] {
 }
 
 .legal-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
   margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
   font-weight: 700;
 }
 
 .legal-back::before {
   content: "\2190";
+  font-size: 1rem;
 }
 
 .legal-header p,
@@ -862,10 +871,10 @@ h2[id] {
 }
 
 .site-footer {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) auto auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 2rem;
-  align-items: start;
   width: min(100% - 2.4rem, 1120px);
   margin: 0 auto;
   padding: 0 0 3rem;
@@ -874,7 +883,7 @@ h2[id] {
 }
 
 .site-footer__brand {
-  max-width: 33rem;
+  max-width: 30rem;
 }
 
 .site-footer__logo {
@@ -882,34 +891,28 @@ h2[id] {
   margin-bottom: 1rem;
 }
 
-.site-footer__brand p,
-.site-footer__meta p {
+.site-footer__brand p {
   margin: 0;
   color: rgba(244, 248, 255, 0.72);
   line-height: 1.7;
 }
 
+.site-footer__links {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+
 .site-footer__nav {
-  display: grid;
-  gap: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.9rem 1.4rem;
 }
 
 .site-footer__nav a {
   color: #ffffff;
   font-weight: 600;
-}
-
-.site-footer__meta {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.site-footer__meta p:first-child {
-  color: #ffffff;
-  font-size: 0.84rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .reveal {
@@ -943,8 +946,7 @@ h2[id] {
   .join-layout,
   .application-layout,
   .contact-layout,
-  .legal-grid,
-  .site-footer {
+  .legal-grid {
     grid-template-columns: 1fr;
   }
 
@@ -962,6 +964,17 @@ h2[id] {
   .legal-header,
   .legal-card {
     border-radius: 1.5rem;
+  }
+
+  .site-footer,
+  .site-footer__links,
+  .site-footer__nav {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .site-footer {
+    flex-direction: column;
   }
 }
 

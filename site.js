@@ -29,20 +29,6 @@ function setFormStatus(message, state) {
   formStatus.dataset.state = state;
 }
 
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const result = String(reader.result || "");
-      resolve(result.includes(",") ? result.split(",")[1] : result);
-    };
-
-    reader.onerror = () => reject(new Error("Impossible de lire le fichier."));
-    reader.readAsDataURL(file);
-  });
-}
-
 if (careerForm) {
   const submitButton = careerForm.querySelector('button[type="submit"]');
 
@@ -51,22 +37,21 @@ if (careerForm) {
 
     const formData = new FormData(careerForm);
     const trapValue = String(formData.get("company") || "").trim();
+    const firstName = String(formData.get("firstName") || "").trim();
+    const lastName = String(formData.get("lastName") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const consent = formData.get("consent") === "on";
+    const cv = formData.get("cv");
 
     if (trapValue) {
       return;
     }
 
-    const firstName = String(formData.get("firstName") || "").trim();
-    const lastName = String(formData.get("lastName") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const phone = String(formData.get("phone") || "").trim();
-    const entity = String(formData.get("entity") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-    const consent = formData.get("consent") === "on";
-    const cv = formData.get("cv");
-
     if (!firstName || !lastName || !email) {
-      setFormStatus("Merci de renseigner le prénom, le nom et l'email.", "error");
+      setFormStatus(
+        "Merci de renseigner le pr\u00E9nom, le nom et l'email.",
+        "error"
+      );
       return;
     }
 
@@ -76,17 +61,20 @@ if (careerForm) {
     }
 
     if (cv.type !== "application/pdf") {
-      setFormStatus("Le CV doit être envoyé en PDF.", "error");
+      setFormStatus("Le CV doit \u00EAtre envoy\u00E9 en PDF.", "error");
       return;
     }
 
     if (cv.size > 5 * 1024 * 1024) {
-      setFormStatus("Le fichier dépasse la limite de 5 Mo.", "error");
+      setFormStatus("Le fichier d\u00E9passe la limite de 5 Mo.", "error");
       return;
     }
 
     if (!consent) {
-      setFormStatus("Merci d'accepter le traitement des données avant l'envoi.", "error");
+      setFormStatus(
+        "Merci d'accepter le traitement des donn\u00E9es avant l'envoi.",
+        "error"
+      );
       return;
     }
 
@@ -98,54 +86,35 @@ if (careerForm) {
     }
 
     try {
-      const payload = {
-        firstName,
-        lastName,
-        email,
-        phone,
-        entity,
-        message,
-        consent,
-        cvBase64: await fileToBase64(cv),
-        cvName: cv.name,
-        cvType: cv.type,
-        cvSize: cv.size,
-      };
-
-      const response = await fetch("/api/candidature", {
+      const response = await fetch(careerForm.action, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: formData,
       });
 
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         throw new Error(
-          data.error || "Une erreur est survenue lors de l'envoi de la candidature."
+          data.errors?.[0]?.message ||
+            data.error ||
+            "Une erreur est survenue lors de l'envoi de la candidature."
         );
       }
 
       careerForm.reset();
       setFormStatus(
-        "Votre candidature a bien été transmise. Merci.",
+        "Votre candidature a bien \u00E9t\u00E9 transmise. Merci.",
         "success"
       );
     } catch (error) {
-      const isNetworkError =
-        error instanceof TypeError ||
-        /Failed to fetch|Load failed|NetworkError/i.test(String(error?.message || ""));
-
-      if (isNetworkError) {
-        setFormStatus(
-          "L'envoi ne fonctionne pas depuis un fichier local. Le formulaire doit être utilisé sur le site déployé ou via vercel dev.",
-          "error"
-        );
-      } else {
-        setFormStatus(error.message, "error");
-      }
+      setFormStatus(
+        error?.message ||
+          "L'envoi n'a pas pu aboutir. Merci de r\u00E9essayer dans quelques instants.",
+        "error"
+      );
     } finally {
       if (submitButton) {
         submitButton.disabled = false;

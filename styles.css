@@ -214,7 +214,10 @@ h2[id] {
   justify-content: center;
   min-width: 210px;
   padding: 0.95rem 1.3rem;
+  border: none;
   border-radius: 999px;
+  appearance: none;
+  cursor: pointer;
   font-weight: 700;
   transition:
     transform 180ms ease,

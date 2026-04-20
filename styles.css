@@ -270,6 +270,11 @@ a {
   width: 3.2rem;
   height: 3.2rem;
   flex: 0 0 auto;
+  padding: 0.18rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  object-fit: contain;
 }
 
 .company-pill__copy {
@@ -422,6 +427,11 @@ a {
 .company-detail__identity img {
   width: 4rem;
   height: 4rem;
+  padding: 0.22rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  object-fit: contain;
 }
 
 .company-detail__tag {

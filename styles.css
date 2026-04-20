@@ -138,12 +138,13 @@ a {
 }
 
 .hero__topline .eyebrow:last-child::before {
-  content: "4 enseignes complementaires";
+  content: "4 enseignes compl\00E9mentaires";
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
 
 .hero__logo {
   width: min(230px, 46vw);

@@ -266,15 +266,30 @@ a {
   animation-delay: 380ms;
 }
 
-.company-pill img {
-  width: 3.2rem;
-  height: 3.2rem;
+.logo-badge {
+  display: grid;
+  place-items: center;
+  width: 3.35rem;
+  height: 3.35rem;
   flex: 0 0 auto;
-  padding: 0.18rem;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.32);
+  overflow: hidden;
+}
+
+.logo-badge--large {
+  width: 4rem;
+  height: 4rem;
+}
+
+.logo-badge img {
+  width: 72%;
+  height: 72%;
+  max-width: none;
   object-fit: contain;
+  object-position: center;
+  transform-origin: center;
 }
 
 .company-pill__copy {
@@ -422,16 +437,6 @@ a {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
-}
-
-.company-detail__identity img {
-  width: 4rem;
-  height: 4rem;
-  padding: 0.22rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  object-fit: contain;
 }
 
 .company-detail__tag {

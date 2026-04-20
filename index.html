@@ -332,7 +332,7 @@
               le pilotage et les fonctions support.
             </p>
             <div class="join-layout__actions">
-              <a class="button button--primary" href="#contact">Prendre contact</a>
+              <a class="button button--primary" href="#application">Candidature spontan&eacute;e</a>
               <a class="button button--ghost" href="#companies-title">Explorer les enseignes</a>
             </div>
           </div>
@@ -369,6 +369,93 @@
         </div>
       </section>
 
+      <section class="section section--application reveal" id="application" aria-labelledby="application-title">
+        <div class="application-panel">
+          <div class="application-layout">
+            <div class="application-copy">
+              <p class="section__kicker">Candidature spontan&eacute;e</p>
+              <h2 id="application-title">Transmettre un CV sans afficher l'adresse de r&eacute;ception publiquement.</h2>
+              <p>
+                Ce formulaire permet d'envoyer une candidature spontan&eacute;e au
+                groupe de mani&egrave;re confidentielle. L'adresse de r&eacute;ception n'est
+                pas affich&eacute;e sur le site : l'envoi se fait c&ocirc;t&eacute; serveur.
+              </p>
+              <p>
+                Pour simplifier le traitement et garantir un envoi fiable, le CV
+                est demand&eacute; au format PDF. Vous pourrez ensuite ajuster le
+                workflow de r&eacute;ception ou de tri selon votre organisation.
+              </p>
+              <p class="application-note">
+                En envoyant une candidature, le candidat accepte que ses donn&eacute;es
+                soient utilis&eacute;es pour l'&eacute;tude de son dossier, conform&eacute;ment aux
+                informations indiqu&eacute;es dans les
+                <a href="mentions-legales.html">mentions l&eacute;gales et informations de confidentialit&eacute;</a>.
+              </p>
+            </div>
+
+            <form class="career-form" data-career-form novalidate>
+              <div class="form-grid">
+                <label class="field">
+                  <span>Pr&eacute;nom</span>
+                  <input type="text" name="firstName" autocomplete="given-name" required />
+                </label>
+                <label class="field">
+                  <span>Nom</span>
+                  <input type="text" name="lastName" autocomplete="family-name" required />
+                </label>
+                <label class="field">
+                  <span>Email</span>
+                  <input type="email" name="email" autocomplete="email" required />
+                </label>
+                <label class="field">
+                  <span>T&eacute;l&eacute;phone</span>
+                  <input type="tel" name="phone" autocomplete="tel" />
+                </label>
+                <label class="field field--full">
+                  <span>Entit&eacute; souhait&eacute;e</span>
+                  <select name="entity">
+                    <option value="">Choisir une entit&eacute; ou le groupe</option>
+                    <option value="Fergy Holding">Fergy Holding</option>
+                    <option value="Cas&eacute;o">Cas&eacute;o</option>
+                    <option value="MD R&eacute;nov'">MD R&eacute;nov'</option>
+                    <option value="Carrelage et Bain">Carrelage et Bain</option>
+                    <option value="Pulsat">Pulsat</option>
+                  </select>
+                </label>
+                <label class="field field--full">
+                  <span>Message</span>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="Quelques mots sur le profil, la motivation ou le poste recherch&eacute;."
+                  ></textarea>
+                </label>
+                <label class="field field--full">
+                  <span>CV (PDF, 5 Mo max)</span>
+                  <input type="file" name="cv" accept="application/pdf" required />
+                </label>
+                <label class="field visually-hidden" aria-hidden="true">
+                  <span>Site web</span>
+                  <input type="text" name="company" tabindex="-1" autocomplete="off" />
+                </label>
+                <label class="checkbox-field field--full">
+                  <input type="checkbox" name="consent" required />
+                  <span>
+                    J'accepte que mes donn&eacute;es soient transmises &agrave; Fergy Holding
+                    pour l'&eacute;tude de ma candidature.
+                  </span>
+                </label>
+              </div>
+
+              <div class="career-form__footer">
+                <button class="button button--primary" type="submit">Envoyer ma candidature</button>
+                <p class="form-status" data-form-status aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <section class="section section--contact reveal" id="contact" aria-labelledby="contact-title">
         <div class="contact-panel">
           <div class="section__heading">
@@ -379,29 +466,31 @@
           <div class="contact-layout">
             <div class="contact-copy">
               <p>
-                Cette page peut servir de mini site d'accueil depuis un email,
-                pour orienter un partenaire, un candidat ou un contact vers la
-                bonne entit&eacute; du groupe.
+                Le si&egrave;ge social connu de Fergy Holding est situ&eacute; &agrave; Meythet,
+                60 route de Frangy, 74000 Annecy. Cette adresse provient d'un
+                registre public d'entreprise et peut &ecirc;tre reprise dans les
+                mentions l&eacute;gales du mini-site.
               </p>
               <p>
-                Vous pouvez y ajouter vos coordonn&eacute;es groupe, une adresse de
-                contact recrutement, un lien LinkedIn ou un formulaire selon
-                l'usage souhait&eacute;.
+                Pour rester juridiquement propre, la version finale devrait aussi
+                inclure un email public de contact, un num&eacute;ro de t&eacute;l&eacute;phone et
+                une page de mentions l&eacute;gales/confidentialit&eacute; facilement
+                accessible.
               </p>
             </div>
 
-            <div class="contact-list" aria-label="Informations &agrave; compl&eacute;ter">
+            <div class="contact-list" aria-label="Informations de contact du groupe">
               <article>
-                <span>Email groupe</span>
-                <strong>&Agrave; renseigner</strong>
+                <span>Si&egrave;ge social</span>
+                <strong>Meythet, 60 route de Frangy, 74000 Annecy</strong>
               </article>
               <article>
-                <span>T&eacute;l&eacute;phone</span>
-                <strong>&Agrave; renseigner</strong>
+                <span>Candidatures</span>
+                <strong>Transmission confidentielle via le formulaire du site</strong>
               </article>
               <article>
-                <span>Adresse / si&egrave;ge</span>
-                <strong>Annecy ou adresse du groupe &agrave; confirmer</strong>
+                <span>Coordonn&eacute;es publiques</span>
+                <strong>Email public et t&eacute;l&eacute;phone &agrave; confirmer pour une version l&eacute;galement compl&egrave;te</strong>
               </article>
             </div>
           </div>
@@ -434,7 +523,9 @@
         <a href="#holding">La holding</a>
         <a href="#companies-title">Les entit&eacute;s</a>
         <a href="#join-us">Nous rejoindre</a>
+        <a href="#application">Candidature</a>
         <a href="#contact">Contact</a>
+        <a href="mentions-legales.html">Mentions l&eacute;gales</a>
       </nav>
 
       <div class="site-footer__meta">

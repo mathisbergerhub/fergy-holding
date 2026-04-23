@@ -594,6 +594,12 @@ h2[id] {
   text-underline-offset: 0.18em;
 }
 
+.checkbox-field a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .career-form {
   padding: 1.35rem;
   border: 1px solid var(--line);

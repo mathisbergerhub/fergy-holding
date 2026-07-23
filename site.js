@@ -51,10 +51,47 @@ function closeCustomSelect(select) {
   }
 }
 
+function getCustomSelectOptions(select) {
+  return Array.from(select.querySelectorAll(".custom-select__option"));
+}
+
+function openCustomSelect(select, requestedIndex) {
+  const trigger = select.querySelector(".custom-select__trigger");
+  const menu = select.querySelector(".custom-select__menu");
+  const options = getCustomSelectOptions(select);
+
+  customSelects.forEach((item) => {
+    if (item !== select) {
+      closeCustomSelect(item);
+    }
+  });
+
+  select.classList.add("is-open");
+  trigger?.setAttribute("aria-expanded", "true");
+
+  if (menu) {
+    menu.hidden = false;
+  }
+
+  if (!options.length || requestedIndex === false) {
+    return;
+  }
+
+  const activeIndex = options.findIndex((option) =>
+    option.classList.contains("is-active")
+  );
+  const focusIndex =
+    typeof requestedIndex === "number"
+      ? requestedIndex
+      : Math.max(activeIndex, 0);
+
+  options[Math.min(Math.max(focusIndex, 0), options.length - 1)]?.focus();
+}
+
 function setCustomSelectValue(select, value, label) {
   const input = select.querySelector('input[type="hidden"]');
   const valueNode = select.querySelector(".custom-select__value");
-  const options = select.querySelectorAll(".custom-select__option");
+  const options = getCustomSelectOptions(select);
 
   if (input) {
     input.value = value;
@@ -65,14 +102,35 @@ function setCustomSelectValue(select, value, label) {
   }
 
   options.forEach((option) => {
-    option.classList.toggle("is-active", option.dataset.value === value);
+    const isSelected = option.dataset.value === value;
+
+    option.classList.toggle("is-active", isSelected);
+    option.setAttribute("aria-selected", String(isSelected));
   });
+}
+
+function chooseCustomSelectOption(select, option) {
+  const trigger = select.querySelector(".custom-select__trigger");
+  const optionLabel =
+    option.querySelector("strong")?.textContent.trim() ||
+    option.textContent.trim();
+
+  setCustomSelectValue(select, option.dataset.value || "", optionLabel);
+  closeCustomSelect(select);
+  trigger?.focus();
+}
+
+function focusAdjacentOption(select, currentOption, direction) {
+  const options = getCustomSelectOptions(select);
+  const currentIndex = options.indexOf(currentOption);
+  const nextIndex = (currentIndex + direction + options.length) % options.length;
+
+  options[nextIndex]?.focus();
 }
 
 customSelects.forEach((select) => {
   const trigger = select.querySelector(".custom-select__trigger");
-  const menu = select.querySelector(".custom-select__menu");
-  const options = select.querySelectorAll(".custom-select__option");
+  const options = getCustomSelectOptions(select);
   const initialOption = select.querySelector(".custom-select__option.is-active");
 
   if (initialOption) {
@@ -90,27 +148,56 @@ customSelects.forEach((select) => {
   trigger?.addEventListener("click", () => {
     const isOpen = select.classList.contains("is-open");
 
-    customSelects.forEach((item) => closeCustomSelect(item));
+    if (isOpen) {
+      closeCustomSelect(select);
+    } else {
+      openCustomSelect(select, false);
+    }
+  });
 
-    if (!isOpen) {
-      select.classList.add("is-open");
-      trigger.setAttribute("aria-expanded", "true");
+  trigger?.addEventListener("keydown", (event) => {
+    const isOpen = select.classList.contains("is-open");
 
-      if (menu) {
-        menu.hidden = false;
-      }
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      openCustomSelect(select, event.key === "ArrowUp" ? options.length - 1 : undefined);
+      return;
+    }
+
+    if ((event.key === "Enter" || event.key === " ") && !isOpen) {
+      event.preventDefault();
+      openCustomSelect(select);
     }
   });
 
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      const optionLabel =
-        option.querySelector("strong")?.textContent.trim() ||
-        option.textContent.trim();
+      chooseCustomSelectOption(select, option);
+    });
 
-      setCustomSelectValue(select, option.dataset.value || "", optionLabel);
-      closeCustomSelect(select);
-      trigger?.focus();
+    option.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        focusAdjacentOption(select, option, 1);
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        focusAdjacentOption(select, option, -1);
+      } else if (event.key === "Home") {
+        event.preventDefault();
+        options[0]?.focus();
+      } else if (event.key === "End") {
+        event.preventDefault();
+        options.at(-1)?.focus();
+      } else if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        chooseCustomSelectOption(select, option);
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        closeCustomSelect(select);
+        trigger?.focus();
+      } else if (event.key === "Tab") {
+        closeCustomSelect(select);
+      }
     });
   });
 });
@@ -125,7 +212,12 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    customSelects.forEach((select) => closeCustomSelect(select));
+    customSelects.forEach((select) => {
+      if (select.classList.contains("is-open")) {
+        closeCustomSelect(select);
+        select.querySelector(".custom-select__trigger")?.focus();
+      }
+    });
   }
 });
 

@@ -365,7 +365,7 @@ h2[id] {
 }
 
 .company-pill__copy small {
-  color: rgba(244, 248, 255, 0.72);
+  color: rgba(244, 248, 255, 0.88);
   font-size: 0.88rem;
   font-weight: 500;
   line-height: 1.35;
@@ -436,7 +436,7 @@ h2[id] {
 
 .facts dt {
   margin-bottom: 0.4rem;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -504,7 +504,7 @@ h2[id] {
 
 .company-detail__tag {
   margin: 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 0.95rem;
   font-weight: 600;
 }
@@ -674,7 +674,7 @@ h2[id] {
 .field span,
 .field legend,
 .checkbox-field span {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.88rem;
   font-weight: 700;
 }
@@ -843,7 +843,7 @@ h2[id] {
 }
 
 .custom-select__option small {
-  color: rgba(244, 248, 255, 0.66);
+  color: rgba(244, 248, 255, 0.84);
   font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.35;
@@ -869,7 +869,7 @@ h2[id] {
 .field-hint {
   display: block;
   margin-top: 0.1rem;
-  color: rgba(244, 248, 255, 0.64);
+  color: rgba(244, 248, 255, 0.82);
   font-size: 0.82rem;
   line-height: 1.45;
 }
@@ -961,16 +961,40 @@ h2[id] {
 .contact-list span {
   display: block;
   margin-bottom: 0.45rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.86);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.contact-list strong {
+.contact-list strong,
+.contact-list__link {
   font-size: 1rem;
   line-height: 1.45;
+}
+
+.contact-list__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease;
+}
+
+.contact-list__link:hover,
+.contact-list__link:focus-visible {
+  outline: none;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-cta {
+  margin-top: 1.6rem;
 }
 
 .contact-shortcuts {
@@ -1109,7 +1133,7 @@ h2[id] {
 
 .site-footer__brand p {
   margin: 0;
-  color: rgba(244, 248, 255, 0.72);
+  color: rgba(244, 248, 255, 0.86);
   line-height: 1.7;
 }
 
@@ -1132,10 +1156,18 @@ h2[id] {
 }
 
 .reveal,
-html.js .reveal,
 html.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 620ms ease,
+    transform 620ms ease;
+  will-change: opacity, transform;
 }
 
 .button[disabled] {

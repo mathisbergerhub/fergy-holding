@@ -1,5 +1,53 @@
 document.documentElement.classList.add("js");
 
+// Reveal sections on scroll. Falls back to fully visible when the browser
+// lacks IntersectionObserver or the user prefers reduced motion.
+(function initReveal() {
+  const revealables = document.querySelectorAll(".reveal");
+
+  if (!revealables.length) {
+    return;
+  }
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealables.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    // threshold 0 fires as soon as any part enters, so sections taller than
+    // the viewport still reveal reliably.
+    { rootMargin: "0px 0px -12% 0px", threshold: 0 }
+  );
+
+  revealables.forEach((element) => observer.observe(element));
+
+  // Safety net: if anything is still hidden once the page has fully loaded
+  // (e.g. an observer that never fired), reveal it so content is never lost.
+  window.addEventListener("load", () => {
+    window.setTimeout(() => {
+      revealables.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          element.classList.add("is-visible");
+        }
+      });
+    }, 400);
+  });
+})();
+
 const careerForm = document.querySelector("[data-career-form]");
 const formStatus = document.querySelector("[data-form-status]");
 const submitButton = careerForm?.querySelector("[data-submit-button]");

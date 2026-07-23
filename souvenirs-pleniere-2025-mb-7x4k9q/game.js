@@ -7,6 +7,7 @@ const locations = {
       { id: "caseo-annecy", name: "Cas\u00e9o" },
       { id: "cb-annecy", name: "Carrelage et Bain" },
       { id: "md-renov-annecy", name: "MD R\u00e9nov'" },
+      { id: "pulsat", name: "Pulsat" },
     ],
   },
   chalon: {

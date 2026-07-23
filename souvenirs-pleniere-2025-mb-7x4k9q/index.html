@@ -51,22 +51,36 @@
       <section class="agency-picker" aria-labelledby="agency-picker-title">
         <div class="agency-picker__heading">
           <p class="agency-picker__label">Acc&egrave;s aux vid&eacute;os</p>
-          <h2 id="agency-picker-title">Choisissez votre agence</h2>
-          <p>La vid&eacute;o correspondante s&rsquo;affichera juste en dessous.</p>
+          <h2 id="agency-picker-title">Choisissez d&rsquo;abord votre ville</h2>
+          <p>
+            Si plusieurs enseignes sont pr&eacute;sentes dans la m&ecirc;me ville,
+            vous pourrez ensuite choisir votre magasin.
+          </p>
         </div>
 
-        <div class="agency-picker__grid" aria-label="Liste des agences">
-          <button type="button" data-agency-target="saint-priest">Saint-Priest</button>
-          <button type="button" data-agency-target="montpellier">Montpellier</button>
-          <button type="button" data-agency-target="komegie">Kom&eacute;gie</button>
-          <button type="button" data-agency-target="cb-grenoble">
-            Carrelage et Bain Grenoble
-          </button>
-          <button type="button" data-agency-target="macon">M&acirc;con</button>
-          <button type="button" data-agency-target="pulsat">Pulsat</button>
-          <button type="button" data-agency-target="grenoble">Grenoble</button>
-          <button type="button" data-agency-target="chalon">Chalon-sur-Sa&ocirc;ne</button>
-          <button type="button" data-agency-target="annecy">Cas&eacute;o Annecy</button>
+        <h3 class="agency-picker__section-title">Villes</h3>
+        <div class="agency-picker__grid" aria-label="Liste des villes">
+          <button type="button" data-location-target="annecy">Annecy</button>
+          <button type="button" data-location-target="chalon">Chalon-sur-Sa&ocirc;ne</button>
+          <button type="button" data-location-target="chambery">Chamb&eacute;ry</button>
+          <button type="button" data-location-target="chaponost">Chaponost</button>
+          <button type="button" data-location-target="grenoble">Grenoble</button>
+          <button type="button" data-location-target="macon">M&acirc;con</button>
+          <button type="button" data-location-target="montpellier">Montpellier</button>
+          <button type="button" data-location-target="saint-priest">Saint-Priest</button>
+        </div>
+
+        <div class="entity-picker" data-entity-picker hidden>
+          <p class="agency-picker__label">Plusieurs vid&eacute;os disponibles</p>
+          <h3 data-entity-title>Choisissez votre enseigne</h3>
+          <div class="entity-picker__grid" data-entity-list></div>
+        </div>
+
+        <h3 class="agency-picker__section-title">Groupe et r&eacute;seaux</h3>
+        <div class="agency-picker__grid" aria-label="Groupe et réseaux">
+          <button type="button" data-agency-direct="fergy">Fergy Holding</button>
+          <button type="button" data-agency-direct="pulsat">Pulsat</button>
+          <button type="button" data-agency-direct="komegie">Kom&eacute;gie</button>
         </div>
 
         <button class="agency-picker__all" type="button" data-show-all>
@@ -81,22 +95,22 @@
             <h2 id="videos-title" data-videos-title>Votre Fast &amp; Curious</h2>
           </div>
           <p>
-            Les liens Smash indiqu&eacute;s ci-dessous expirent le
+            Les liens de transfert indiqu&eacute;s ci-dessous expirent le
             <strong>30 juillet 2026</strong>.
           </p>
         </div>
 
         <div class="download-list">
-          <a data-agency="saint-priest" href="https://fromsmash.com/F-and-C-Saint-Priest" target="_blank" rel="noopener noreferrer">
+          <a data-agency="caseo-saint-priest" href="https://fromsmash.com/F-and-C-Saint-Priest" target="_blank" rel="noopener noreferrer">
             <span>
-              <strong>Saint-Priest</strong>
+              <strong>Cas&eacute;o Saint-Priest</strong>
               <small>F&amp;C Saint-Priest.MOV · 1,1 Go</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a data-agency="montpellier" href="https://fromsmash.com/F-and-C-Montpellier" target="_blank" rel="noopener noreferrer">
+          <a data-agency="caseo-montpellier" href="https://fromsmash.com/F-and-C-Montpellier" target="_blank" rel="noopener noreferrer">
             <span>
-              <strong>Montpellier</strong>
+              <strong>Cas&eacute;o Montpellier</strong>
               <small>F&amp;C Montpellier.MOV · 1,55 Go</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
@@ -115,9 +129,9 @@
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a data-agency="macon" href="https://fromsmash.com/qQDbLWt_Zx-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="caseo-macon" href="https://fromsmash.com/qQDbLWt_Zx-ct" target="_blank" rel="noopener noreferrer">
             <span>
-              <strong>M&acirc;con</strong>
+              <strong>Cas&eacute;o M&acirc;con</strong>
               <small>F&amp;C M&acirc;con.MOV · 658,52 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
@@ -129,24 +143,59 @@
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a data-agency="grenoble" href="https://fromsmash.com/QZY_~vYr18-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="caseo-grenoble" href="https://fromsmash.com/QZY_~vYr18-ct" target="_blank" rel="noopener noreferrer">
             <span>
-              <strong>Grenoble</strong>
+              <strong>Cas&eacute;o Grenoble</strong>
               <small>F&amp;C Grenoble.MOV · 880,78 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a data-agency="chalon" href="https://fromsmash.com/1W_Bs99qnA-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="caseo-chalon" href="https://fromsmash.com/1W_Bs99qnA-ct" target="_blank" rel="noopener noreferrer">
             <span>
-              <strong>Chalon-sur-Sa&ocirc;ne</strong>
+              <strong>Cas&eacute;o Chalon-sur-Sa&ocirc;ne</strong>
               <small>F&amp;C Chalon.MOV · 533,37 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a data-agency="annecy" href="https://we.tl/t-dP7vCGeUUaybM67h" target="_blank" rel="noopener noreferrer">
+          <a data-agency="caseo-annecy" href="https://we.tl/t-dP7vCGeUUaybM67h" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Cas&eacute;o Annecy</strong>
               <small>Fast &amp; Curious Cas&eacute;o Annecy</small>
+            </span>
+            <span class="download-list__action">T&eacute;l&eacute;charger</span>
+          </a>
+          <a data-agency="fergy" href="https://fromsmash.com/tAyDcvEjRm-ct" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>Fergy Holding</strong>
+              <small>F&amp;C Fergy.MOV &middot; 1,17 Go</small>
+            </span>
+            <span class="download-list__action">T&eacute;l&eacute;charger</span>
+          </a>
+          <a data-agency="caseo-chaponost" href="https://fromsmash.com/zuM2H76MiS-ct" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>Cas&eacute;o Chaponost</strong>
+              <small>F&amp;C Chaponost.MOV &middot; 1,43 Go</small>
+            </span>
+            <span class="download-list__action">T&eacute;l&eacute;charger</span>
+          </a>
+          <a data-agency="md-renov-annecy" href="https://fromsmash.com/bEPYOQOvCL-ct" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>MD R&eacute;nov&rsquo; Annecy</strong>
+              <small>F&amp;C MD R&eacute;nov&rsquo;.MOV &middot; 787,39 Mo</small>
+            </span>
+            <span class="download-list__action">T&eacute;l&eacute;charger</span>
+          </a>
+          <a data-agency="caseo-chambery" href="https://fromsmash.com/_26zQoxb~N-ct" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>Cas&eacute;o Chamb&eacute;ry</strong>
+              <small>F&amp;C Chamb&eacute;ry.MOV &middot; 966,48 Mo</small>
+            </span>
+            <span class="download-list__action">T&eacute;l&eacute;charger</span>
+          </a>
+          <a data-agency="cb-annecy" href="https://fromsmash.com/bF94xt4soZ-ct" target="_blank" rel="noopener noreferrer">
+            <span>
+              <strong>Carrelage et Bain Annecy</strong>
+              <small>F&amp;C C&amp;B Annecy.MOV &middot; 366,8 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>

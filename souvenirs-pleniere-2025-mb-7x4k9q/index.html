@@ -35,59 +35,44 @@
         <p class="farewell__date">Pl&eacute;ni&egrave;re 2025</p>
         <h1>Un dernier Fast &amp; Curious&nbsp;?</h1>
         <p class="farewell__intro">
-          Apr&egrave;s dix-huit mois pass&eacute;s &agrave; vos c&ocirc;t&eacute;s, je vous laisse un
-          dernier petit d&eacute;fi avant de passer le flambeau. Cinq questions sur
-          les r&eacute;gions de nos agences, puis les souvenirs vid&eacute;o de la
-          pl&eacute;ni&egrave;re.
+          Apr&egrave;s dix-huit mois pass&eacute;s &agrave; vos c&ocirc;t&eacute;s, je vous partage les
+          Fast &amp; Curious r&eacute;alis&eacute;s &agrave; l&rsquo;occasion de la pl&eacute;ni&egrave;re.
+          Choisissez simplement votre agence pour retrouver votre vid&eacute;o.
         </p>
         <p class="farewell__signature">Merci pour tout, Mathis</p>
       </header>
 
-      <section class="quiz" aria-labelledby="quiz-title">
-        <div class="quiz__header">
-          <div>
-            <p class="quiz__label">Le d&eacute;fi express</p>
-            <h2 id="quiz-title">Connaissez-vous bien le terrain&nbsp;?</h2>
-          </div>
-          <p class="quiz__progress" aria-live="polite">
-            Question <span data-question-number>1</span> / 5
-          </p>
+      <section class="agency-picker" aria-labelledby="agency-picker-title">
+        <div class="agency-picker__heading">
+          <p class="agency-picker__label">Acc&egrave;s aux vid&eacute;os</p>
+          <h2 id="agency-picker-title">Choisissez votre agence</h2>
+          <p>La vid&eacute;o correspondante s&rsquo;affichera juste en dessous.</p>
         </div>
 
-        <div class="quiz__track" aria-hidden="true">
-          <span data-progress-bar></span>
-        </div>
-
-        <div class="quiz__question" data-quiz-question>
-          <p data-question-text></p>
-          <div class="quiz__answers" data-answer-list></div>
-        </div>
-
-        <div class="quiz__result" data-quiz-result hidden aria-live="polite">
-          <p class="quiz__score">
-            <strong data-score>0/5</strong>
-            <span data-score-message></span>
-          </p>
-          <button class="button button--primary" type="button" data-show-videos>
-            Voir les Fast &amp; Curious
+        <div class="agency-picker__grid" aria-label="Liste des agences">
+          <button type="button" data-agency-target="saint-priest">Saint-Priest</button>
+          <button type="button" data-agency-target="montpellier">Montpellier</button>
+          <button type="button" data-agency-target="komegie">Kom&eacute;gie</button>
+          <button type="button" data-agency-target="cb-grenoble">
+            Carrelage et Bain Grenoble
           </button>
+          <button type="button" data-agency-target="macon">M&acirc;con</button>
+          <button type="button" data-agency-target="pulsat">Pulsat</button>
+          <button type="button" data-agency-target="grenoble">Grenoble</button>
+          <button type="button" data-agency-target="chalon">Chalon-sur-Sa&ocirc;ne</button>
+          <button type="button" data-agency-target="annecy">Cas&eacute;o Annecy</button>
         </div>
 
-        <div class="quiz__actions">
-          <button class="button button--primary" type="button" data-next-question disabled>
-            Valider la r&eacute;ponse
-          </button>
-          <button class="button button--quiet" type="button" data-skip-quiz>
-            Voir directement les vid&eacute;os
-          </button>
-        </div>
+        <button class="agency-picker__all" type="button" data-show-all>
+          Je souhaite voir toutes les vid&eacute;os
+        </button>
       </section>
 
       <section class="videos" id="videos" data-videos hidden aria-labelledby="videos-title">
         <div class="videos__heading">
           <div>
             <p class="videos__label">Souvenirs de la pl&eacute;ni&egrave;re</p>
-            <h2 id="videos-title">Les Fast &amp; Curious 2025</h2>
+            <h2 id="videos-title" data-videos-title>Votre Fast &amp; Curious</h2>
           </div>
           <p>
             Les liens Smash indiqu&eacute;s ci-dessous expirent le
@@ -96,63 +81,63 @@
         </div>
 
         <div class="download-list">
-          <a href="https://fromsmash.com/F-and-C-Saint-Priest" target="_blank" rel="noopener noreferrer">
+          <a data-agency="saint-priest" href="https://fromsmash.com/F-and-C-Saint-Priest" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Saint-Priest</strong>
               <small>F&amp;C Saint-Priest.MOV · 1,1 Go</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/F-and-C-Montpellier" target="_blank" rel="noopener noreferrer">
+          <a data-agency="montpellier" href="https://fromsmash.com/F-and-C-Montpellier" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Montpellier</strong>
               <small>F&amp;C Montpellier.MOV · 1,55 Go</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/BSNBBxBFXs-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="komegie" href="https://fromsmash.com/BSNBBxBFXs-ct" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Kom&eacute;gie</strong>
               <small>F&amp;C Kom&eacute;gie.MOV · 88,72 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/8nBUwsRvOx-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="cb-grenoble" href="https://fromsmash.com/8nBUwsRvOx-ct" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Carrelage et Bain Grenoble</strong>
               <small>F&amp;C C&amp;B Grenoble.MOV · 307,54 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/qQDbLWt_Zx-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="macon" href="https://fromsmash.com/qQDbLWt_Zx-ct" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>M&acirc;con</strong>
               <small>F&amp;C M&acirc;con.MOV · 658,52 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/TFb_tApG~b-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="pulsat" href="https://fromsmash.com/TFb_tApG~b-ct" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Pulsat</strong>
               <small>F&amp;C Pulsat.MOV · 175,77 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/QZY_~vYr18-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="grenoble" href="https://fromsmash.com/QZY_~vYr18-ct" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Grenoble</strong>
               <small>F&amp;C Grenoble.MOV · 880,78 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://fromsmash.com/1W_Bs99qnA-ct" target="_blank" rel="noopener noreferrer">
+          <a data-agency="chalon" href="https://fromsmash.com/1W_Bs99qnA-ct" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Chalon-sur-Sa&ocirc;ne</strong>
               <small>F&amp;C Chalon.MOV · 533,37 Mo</small>
             </span>
             <span class="download-list__action">T&eacute;l&eacute;charger</span>
           </a>
-          <a href="https://we.tl/t-dP7vCGeUUaybM67h" target="_blank" rel="noopener noreferrer">
+          <a data-agency="annecy" href="https://we.tl/t-dP7vCGeUUaybM67h" target="_blank" rel="noopener noreferrer">
             <span>
               <strong>Cas&eacute;o Annecy</strong>
               <small>Fast &amp; Curious Cas&eacute;o Annecy</small>
@@ -181,8 +166,8 @@
 
     <noscript>
       <div class="noscript">
-        JavaScript est n&eacute;cessaire pour jouer. Les liens de t&eacute;l&eacute;chargement
-        sont disponibles en activant JavaScript.
+        JavaScript est n&eacute;cessaire pour choisir votre agence et afficher le
+        lien de t&eacute;l&eacute;chargement.
       </div>
     </noscript>
   </body>

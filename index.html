@@ -438,19 +438,49 @@
                   <span>T&eacute;l&eacute;phone</span>
                   <input type="tel" name="phone" autocomplete="tel" maxlength="30" />
                 </label>
-                <label class="field field--full">
-                  <span>Entit&eacute; souhait&eacute;e</span>
-                  <span class="select-field">
-                    <select name="entity" autocomplete="organization-title">
-                      <option value="">Choisir une entit&eacute; ou le groupe</option>
-                      <option value="Fergy Holding">Fergy Holding</option>
-                      <option value="Cas&eacute;o">Cas&eacute;o</option>
-                      <option value="MD R&eacute;nov'">MD R&eacute;nov'</option>
-                      <option value="Carrelage et Bain">Carrelage et Bain</option>
-                      <option value="Pulsat">Pulsat</option>
-                    </select>
-                  </span>
-                </label>
+                <fieldset class="field field--full entity-picker">
+                  <legend>Entit&eacute; souhait&eacute;e</legend>
+                  <div class="entity-options">
+                    <label class="entity-option">
+                      <input class="entity-option__input" type="radio" name="entity" value="Fergy Holding" />
+                      <span class="entity-option__card">
+                        <strong>Fergy Holding</strong>
+                        <small>Orientation par le groupe</small>
+                      </span>
+                    </label>
+                    <label class="entity-option">
+                      <input class="entity-option__input" type="radio" name="entity" value="Cas&eacute;o" />
+                      <span class="entity-option__card">
+                        <strong>Cas&eacute;o</strong>
+                        <small>Cuisine et menuiserie</small>
+                      </span>
+                    </label>
+                    <label class="entity-option">
+                      <input class="entity-option__input" type="radio" name="entity" value="MD R&eacute;nov'" />
+                      <span class="entity-option__card">
+                        <strong>MD R&eacute;nov'</strong>
+                        <small>Menuiseries et r&eacute;novation</small>
+                      </span>
+                    </label>
+                    <label class="entity-option">
+                      <input class="entity-option__input" type="radio" name="entity" value="Carrelage et Bain" />
+                      <span class="entity-option__card">
+                        <strong>Carrelage et Bain</strong>
+                        <small>Salle de bain et rev&ecirc;tements</small>
+                      </span>
+                    </label>
+                    <label class="entity-option">
+                      <input class="entity-option__input" type="radio" name="entity" value="Pulsat" />
+                      <span class="entity-option__card">
+                        <strong>Pulsat</strong>
+                        <small>&Eacute;lectrom&eacute;nager et services</small>
+                      </span>
+                    </label>
+                  </div>
+                  <small class="field-hint">
+                    Laissez ce choix vide si vous souhaitez simplement &ecirc;tre orient&eacute; selon votre profil.
+                  </small>
+                </fieldset>
                 <label class="field field--full">
                   <span>Message</span>
                   <textarea

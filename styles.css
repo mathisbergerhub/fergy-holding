@@ -624,6 +624,7 @@ h2[id] {
 }
 
 .field span,
+.field legend,
 .checkbox-field span {
   color: rgba(255, 255, 255, 0.78);
   font-size: 0.88rem;
@@ -631,8 +632,7 @@ h2[id] {
 }
 
 .field input,
-.field textarea,
-.select-field select {
+.field textarea {
   width: 100%;
   padding: 0.95rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -652,37 +652,8 @@ h2[id] {
   resize: vertical;
 }
 
-.select-field {
-  position: relative;
-  display: block;
-}
-
-.select-field::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  width: 0.78rem;
-  height: 0.78rem;
-  border-right: 2px solid rgba(255, 255, 255, 0.84);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.84);
-  transform: translateY(-65%) rotate(45deg);
-  pointer-events: none;
-}
-
-.select-field select {
-  appearance: none;
-  padding-right: 2.9rem;
-}
-
-.select-field select option {
-  color: #10224f;
-  background: #ffffff;
-}
-
 .field input:focus-visible,
-.field textarea:focus-visible,
-.select-field select:focus-visible {
+.field textarea:focus-visible {
   outline: none;
   border-color: rgba(255, 200, 58, 0.75);
   box-shadow: 0 0 0 3px rgba(255, 200, 58, 0.18);
@@ -693,18 +664,6 @@ h2[id] {
   box-shadow: 0 0 0 3px rgba(255, 120, 120, 0.14);
 }
 
-.field-error {
-  display: none;
-  margin: -0.1rem 0 0;
-  color: #ffd2d2;
-  font-size: 0.84rem;
-  line-height: 1.4;
-}
-
-.field-error[data-fs-active] {
-  display: block;
-}
-
 .honeypot {
   position: absolute;
   left: -9999px;
@@ -713,131 +672,113 @@ h2[id] {
   overflow: hidden;
 }
 
-.custom-select {
-  position: relative;
+.entity-picker {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
 }
 
-.custom-select__trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0.95rem 1rem 0.95rem 1.1rem;
+.entity-picker legend {
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.entity-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.entity-option {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.entity-option__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+.entity-option__card {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+  min-height: 4.5rem;
+  padding: 0.95rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 1rem;
   color: #ffffff;
   background: rgba(2, 18, 50, 0.42);
-  font: inherit;
-  text-align: left;
   transition:
+    transform 160ms ease,
     border-color 160ms ease,
-    box-shadow 160ms ease,
-    background-color 160ms ease;
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
-.custom-select__trigger:hover {
+.entity-option__card::after {
+  content: "";
+  position: absolute;
+  top: 0.95rem;
+  right: 0.95rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.entity-option__card strong {
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.entity-option__card small {
+  color: rgba(244, 248, 255, 0.68);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.entity-option:hover .entity-option__card {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.28);
   background: rgba(6, 28, 71, 0.56);
 }
 
-.custom-select__trigger:focus-visible,
-.custom-select.is-open .custom-select__trigger {
+.entity-option__input:focus-visible + .entity-option__card {
   outline: none;
   border-color: rgba(255, 200, 58, 0.75);
   box-shadow: 0 0 0 3px rgba(255, 200, 58, 0.18);
 }
 
-.custom-select__value {
-  min-width: 0;
-  padding-right: 1rem;
-  line-height: 1.35;
-}
-
-.custom-select__icon {
-  position: relative;
-  width: 0.8rem;
-  height: 0.8rem;
-  flex: 0 0 auto;
-}
-
-.custom-select__icon::before,
-.custom-select__icon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 0.5rem;
-  height: 1.5px;
-  background: rgba(255, 255, 255, 0.84);
-  border-radius: 999px;
-  transition: transform 160ms ease;
-}
-
-.custom-select__icon::before {
-  left: 0.05rem;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.custom-select__icon::after {
-  right: 0.05rem;
-  transform: translateY(-50%) rotate(-45deg);
-}
-
-.custom-select.is-open .custom-select__icon::before {
-  transform: translateY(-50%) rotate(-45deg);
-}
-
-.custom-select.is-open .custom-select__icon::after {
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.custom-select__menu {
-  position: absolute;
-  top: calc(100% + 0.6rem);
-  left: 0;
-  right: 0;
-  z-index: 8;
-  display: grid;
-  gap: 0.35rem;
-  padding: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 1.2rem;
+.entity-option__input:checked + .entity-option__card {
+  border-color: rgba(255, 200, 58, 0.78);
   background:
-    linear-gradient(180deg, rgba(20, 56, 113, 0.96), rgba(7, 26, 66, 0.98));
-  box-shadow: 0 18px 44px rgba(0, 14, 40, 0.36);
-  backdrop-filter: blur(12px);
+    linear-gradient(180deg, rgba(255, 200, 58, 0.16), rgba(255, 200, 58, 0.08)),
+    rgba(2, 18, 50, 0.42);
+  box-shadow: 0 10px 24px rgba(255, 200, 58, 0.08);
 }
 
-.custom-select__menu[hidden] {
-  display: none;
+.entity-option__input:checked + .entity-option__card::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.custom-select__option {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  border: none;
-  border-radius: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
-  background: transparent;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  transition:
-    background-color 140ms ease,
-    color 140ms ease,
-    transform 140ms ease;
-}
-
-.custom-select__option:hover,
-.custom-select__option:focus-visible {
-  outline: none;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(2px);
-}
-
-.custom-select__option.is-active {
-  color: #10224f;
-  background: linear-gradient(180deg, #ffd872 0%, #ffc83a 100%);
-  font-weight: 700;
+.field-hint {
+  display: block;
+  margin-top: 0.1rem;
+  color: rgba(244, 248, 255, 0.64);
+  font-size: 0.82rem;
+  line-height: 1.45;
 }
 
 .checkbox-field {
@@ -888,18 +829,6 @@ h2[id] {
 
 .form-status[data-state="pending"] {
   color: rgba(244, 248, 255, 0.82);
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 .section--contact {

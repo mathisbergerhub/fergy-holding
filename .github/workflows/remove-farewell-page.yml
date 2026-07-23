@@ -1,0 +1,47 @@
+name: Remove temporary farewell page
+
+on:
+  schedule:
+    - cron: "17 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  remove-expired-page:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Check the expiration date
+        id: expiry
+        shell: bash
+        run: |
+          now="$(date -u +%s)"
+          expiry="$(date -u -d '2026-08-06T21:59:59Z' +%s)"
+
+          if [ "$now" -ge "$expiry" ]; then
+            echo "expired=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "expired=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Remove the temporary page
+        if: steps.expiry.outputs.expired == 'true'
+        shell: bash
+        run: |
+          rm -rf -- souvenirs-pleniere-2025-mb-7x4k9q
+          rm -f -- .github/workflows/remove-farewell-page.yml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+
+          git commit -m "Remove expired farewell page"
+          git push

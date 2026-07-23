@@ -8,6 +8,10 @@
       name="description"
       content="Fergy Holding r&eacute;unit Cas&eacute;o, MD R&eacute;nov', Pulsat et Carrelage et Bain autour d'une vision commune de l'habitat, de la r&eacute;novation et de l'&eacute;quipement de la maison."
     />
+    <meta
+      name="google-site-verification"
+      content="FNOn4IQtjNQOpYOeRNCksIq8FOSVG1uNGKEpK0C2Ln8"
+    />
     <meta name="theme-color" content="#003378" />
     <link rel="icon" type="image/svg+xml" href="assets/fergy-holding-logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -438,49 +442,50 @@
                   <span>T&eacute;l&eacute;phone</span>
                   <input type="tel" name="phone" autocomplete="tel" maxlength="30" />
                 </label>
-                <fieldset class="field field--full entity-picker">
-                  <legend>Entit&eacute; souhait&eacute;e</legend>
-                  <div class="entity-options">
-                    <label class="entity-option">
-                      <input class="entity-option__input" type="radio" name="entity" value="Fergy Holding" />
-                      <span class="entity-option__card">
+                <label class="field field--full">
+                  <span>Entit&eacute; souhait&eacute;e</span>
+                  <div class="custom-select" data-custom-select>
+                    <input type="hidden" name="entity" value="" />
+                    <button
+                      class="custom-select__trigger"
+                      type="button"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                    >
+                      <span class="custom-select__value">Choisir une entit&eacute; ou le groupe</span>
+                      <span class="custom-select__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="custom-select__menu" role="listbox" hidden>
+                      <button class="custom-select__option is-active" type="button" data-value="">
+                        <strong>Choisir une entit&eacute; ou le groupe</strong>
+                        <small>Orientation selon votre profil</small>
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Fergy Holding">
                         <strong>Fergy Holding</strong>
                         <small>Orientation par le groupe</small>
-                      </span>
-                    </label>
-                    <label class="entity-option">
-                      <input class="entity-option__input" type="radio" name="entity" value="Cas&eacute;o" />
-                      <span class="entity-option__card">
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Cas&eacute;o">
                         <strong>Cas&eacute;o</strong>
                         <small>Cuisine et menuiserie</small>
-                      </span>
-                    </label>
-                    <label class="entity-option">
-                      <input class="entity-option__input" type="radio" name="entity" value="MD R&eacute;nov'" />
-                      <span class="entity-option__card">
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="MD R&eacute;nov'">
                         <strong>MD R&eacute;nov'</strong>
                         <small>Menuiseries et r&eacute;novation</small>
-                      </span>
-                    </label>
-                    <label class="entity-option">
-                      <input class="entity-option__input" type="radio" name="entity" value="Carrelage et Bain" />
-                      <span class="entity-option__card">
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Carrelage et Bain">
                         <strong>Carrelage et Bain</strong>
                         <small>Salle de bain et rev&ecirc;tements</small>
-                      </span>
-                    </label>
-                    <label class="entity-option">
-                      <input class="entity-option__input" type="radio" name="entity" value="Pulsat" />
-                      <span class="entity-option__card">
+                      </button>
+                      <button class="custom-select__option" type="button" data-value="Pulsat">
                         <strong>Pulsat</strong>
                         <small>&Eacute;lectrom&eacute;nager et services</small>
-                      </span>
-                    </label>
+                      </button>
+                    </div>
                   </div>
                   <small class="field-hint">
                     Laissez ce choix vide si vous souhaitez simplement &ecirc;tre orient&eacute; selon votre profil.
                   </small>
-                </fieldset>
+                </label>
                 <label class="field field--full">
                   <span>Message</span>
                   <textarea

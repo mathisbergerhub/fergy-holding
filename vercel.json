@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/souvenirs-pleniere-2025-mb-7x4k9q/",
+      "destination": "/souvenirs-pleniere-2025-mb-7x4k9q",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/souvenirs-pleniere-2025-mb-7x4k9q/:path*",

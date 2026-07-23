@@ -1,6 +1,5 @@
 document.documentElement.classList.add("js");
 
-const revealItems = document.querySelectorAll(".reveal");
 const careerForm = document.querySelector("[data-career-form]");
 const formStatus = document.querySelector("[data-form-status]");
 const submitButton = careerForm?.querySelector("[data-submit-button]");
@@ -19,24 +18,6 @@ function setFormStatus(message = "", state = "") {
   } else {
     delete formStatus.dataset.state;
   }
-}
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.16 }
-  );
-
-  revealItems.forEach((item) => observer.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
 function closeCustomSelect(select) {

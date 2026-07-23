@@ -111,7 +111,7 @@ h2[id] {
   position: relative;
   width: min(100%, 960px);
   padding: clamp(1.15rem, 2.5vw, 1.6rem);
-  border: 1px solid var(--line);
+  border: none;
   border-radius: 1.5rem;
   background: linear-gradient(180deg, var(--panel-top), var(--panel-bottom));
   box-shadow: 0 24px 60px rgba(0, 19, 55, 0.28);
@@ -612,7 +612,6 @@ h2[id] {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(6, 28, 71, 0.4)),
     rgba(255, 255, 255, 0.03);
-  box-shadow: 0 22px 70px rgba(0, 16, 48, 0.2);
 }
 
 .application-layout {
@@ -936,7 +935,6 @@ h2[id] {
   background:
     linear-gradient(180deg, rgba(108, 182, 229, 0.12), rgba(5, 33, 81, 0.34)),
     rgba(255, 255, 255, 0.03);
-  box-shadow: 0 22px 70px rgba(0, 16, 48, 0.2);
 }
 
 .contact-layout {
@@ -1133,14 +1131,8 @@ h2[id] {
   font-weight: 600;
 }
 
-html.js .reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition:
-    opacity 600ms ease,
-    transform 600ms ease;
-}
-
+.reveal,
+html.js .reveal,
 html.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);

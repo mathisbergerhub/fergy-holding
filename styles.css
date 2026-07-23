@@ -48,7 +48,7 @@ a {
 
 section[id],
 h2[id] {
-  scroll-margin-top: 1.5rem;
+  scroll-margin-top: 5.5rem;
 }
 
 .skip-link {
@@ -94,27 +94,27 @@ h2[id] {
 }
 
 .hero,
-.section {
+.section,
+.page-nav {
   position: relative;
   z-index: 1;
 }
 
 .hero {
-  min-height: 100svh;
   display: grid;
   place-items: center;
-  padding: 2rem 1.2rem;
+  padding: clamp(1rem, 3vw, 2rem) 1.2rem 1rem;
 }
 
 
 .hero__panel {
   position: relative;
-  width: min(100%, 920px);
-  padding: 1.4rem;
+  width: min(100%, 960px);
+  padding: clamp(1.15rem, 2.5vw, 1.6rem);
   border: 1px solid var(--line);
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   background: linear-gradient(180deg, var(--panel-top), var(--panel-bottom));
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 60px rgba(0, 19, 55, 0.28);
   overflow: hidden;
 }
 
@@ -128,7 +128,6 @@ h2[id] {
   pointer-events: none;
 }
 
-.hero__topline,
 .hero__copy,
 .hero__actions,
 .company-nav {
@@ -136,31 +135,9 @@ h2[id] {
   z-index: 1;
 }
 
-.hero__topline {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.65rem 0.95rem;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .hero__logo {
-  width: min(230px, 46vw);
-  margin: 0 auto 1.4rem;
+  width: min(190px, 44vw);
+  margin: 0.25rem auto 1.1rem;
   animation: rise 900ms ease-out both;
 }
 
@@ -189,13 +166,13 @@ h2[id] {
 }
 
 .hero h1 {
-  font-size: clamp(2.3rem, 5vw, 4.5rem);
+  font-size: clamp(2.3rem, 5vw, 4.15rem);
   text-wrap: balance;
 }
 
 .hero__lede {
-  max-width: 58ch;
-  margin: 1.1rem auto 0;
+  max-width: 56ch;
+  margin: 0.9rem auto 0;
   color: var(--muted);
   font-size: clamp(1.02rem, 1.8vw, 1.18rem);
   line-height: 1.6;
@@ -206,7 +183,7 @@ h2[id] {
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 2rem 0 2.2rem;
+  margin: 1.6rem 0 1.8rem;
 }
 
 .button {
@@ -261,6 +238,7 @@ h2[id] {
 
 .company-nav {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -278,6 +256,57 @@ h2[id] {
     border-color 180ms ease,
     background-color 180ms ease;
   animation: rise 800ms ease both;
+}
+
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 38, 91, 0.96);
+}
+
+.page-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: min(100% - 2rem, 960px);
+  min-height: 3.8rem;
+  margin: 0 auto;
+}
+
+.page-nav a {
+  padding: 0.7rem 0.85rem;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+
+.page-nav a:hover,
+.page-nav a:focus-visible {
+  outline: none;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.page-nav .page-nav__action {
+  margin-left: 0.35rem;
+  padding-inline: 1rem;
+  color: #122160;
+  background: var(--accent);
+}
+
+.page-nav .page-nav__action:hover,
+.page-nav .page-nav__action:focus-visible {
+  color: #122160;
+  background: #ffd35f;
 }
 
 .company-pill:nth-child(1) {
@@ -361,7 +390,7 @@ h2[id] {
 .section {
   width: min(100% - 2.4rem, 1120px);
   margin: 0 auto;
-  padding: 5.5rem 0;
+  padding: 4.5rem 0;
 }
 
 .section__heading {
@@ -371,7 +400,7 @@ h2[id] {
 }
 
 .section h2 {
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 4vw, 3.1rem);
 }
 
 .intro-layout {
@@ -505,6 +534,7 @@ h2[id] {
 
 .join-layout {
   padding-top: 0.4rem;
+  align-items: center;
 }
 
 .join-layout__intro > p:last-of-type,
@@ -520,6 +550,25 @@ h2[id] {
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 1.8rem;
+}
+
+.join-summary {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.join-summary span {
+  padding: 1.1rem 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "Sora", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.join-summary span + span {
+  border-top: 1px solid var(--line);
 }
 
 .join-columns {
@@ -559,7 +608,7 @@ h2[id] {
 .application-panel {
   padding: 1.8rem;
   border: 1px solid var(--line);
-  border-radius: 2rem;
+  border-radius: 1.35rem;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(6, 28, 71, 0.4)),
     rgba(255, 255, 255, 0.03);
@@ -604,7 +653,7 @@ h2[id] {
 .career-form {
   padding: 1.35rem;
   border: 1px solid var(--line);
-  border-radius: 1.6rem;
+  border-radius: 1.2rem;
   background: rgba(255, 255, 255, 0.05);
 }
 
@@ -883,7 +932,7 @@ h2[id] {
 .contact-panel {
   padding: 1.8rem;
   border: 1px solid var(--line);
-  border-radius: 2rem;
+  border-radius: 1.35rem;
   background:
     linear-gradient(180deg, rgba(108, 182, 229, 0.12), rgba(5, 33, 81, 0.34)),
     rgba(255, 255, 255, 0.03);
@@ -1127,7 +1176,7 @@ html.js .reveal.is-visible {
 
   .hero__panel {
     padding: 1.1rem;
-    border-radius: 1.6rem;
+    border-radius: 1.25rem;
   }
 
   .contact-panel {
@@ -1155,16 +1204,30 @@ html.js .reveal.is-visible {
 
 @media (max-width: 640px) {
   .hero {
+    padding: 0.8rem;
+  }
+
+  .hero__panel {
     padding: 1rem;
   }
 
+  .hero__logo {
+    width: min(150px, 42vw);
+    margin-bottom: 0.9rem;
+  }
 
-  .hero__topline {
-    margin-bottom: 1.4rem;
+  .hero h1 {
+    font-size: clamp(2.15rem, 11vw, 2.75rem);
+  }
+
+  .hero__lede {
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .hero__actions {
     gap: 0.8rem;
+    margin: 1.35rem 0 1.45rem;
   }
 
   .button {
@@ -1182,6 +1245,11 @@ html.js .reveal.is-visible {
     align-items: flex-start;
   }
 
+  .company-nav {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
   .company-pill__copy strong {
     font-size: 1rem;
   }
@@ -1192,7 +1260,27 @@ html.js .reveal.is-visible {
 
   .section {
     width: min(100% - 1.4rem, 1120px);
-    padding: 4rem 0;
+    padding: 3.5rem 0;
+  }
+
+  .page-nav__inner {
+    width: 100%;
+    min-height: 3.5rem;
+    padding: 0 0.65rem;
+  }
+
+  .page-nav a {
+    padding: 0.65rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .page-nav a[href="#holding"],
+  .page-nav a[href="#contact"] {
+    display: none;
+  }
+
+  .page-nav .page-nav__action {
+    margin-left: auto;
   }
 
   .join-layout__actions,

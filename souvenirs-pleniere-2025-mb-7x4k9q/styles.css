@@ -120,6 +120,23 @@ h1 {
   text-wrap: pretty;
 }
 
+.farewell__notice {
+  max-width: 62ch;
+  margin: 1.5rem auto 0;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.farewell__notice strong {
+  font-weight: 800;
+}
+
 .farewell__signature {
   margin: 1.3rem 0 0;
   color: #ffffff;

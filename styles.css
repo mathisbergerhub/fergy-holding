@@ -270,6 +270,7 @@ h2[id] {
   pointer-events: none;
 }
 
+/* Liquid glass: translucent refractive body, specular top-light, depth. */
 .page-nav__inner {
   position: relative;
   pointer-events: auto;
@@ -281,13 +282,45 @@ h2[id] {
   max-width: 100%;
   padding: 0.4rem 0.45rem;
   border-radius: 999px;
-  background: rgba(8, 38, 88, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.03) 42%,
+      rgba(4, 26, 66, 0.14)
+    ),
+    rgba(10, 46, 104, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.08);
+  backdrop-filter: blur(26px) saturate(200%) brightness(1.08);
   box-shadow:
-    0 14px 34px rgba(0, 15, 45, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    0 16px 40px rgba(0, 15, 45, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -10px 22px rgba(2, 18, 55, 0.28);
+}
+
+/* Glossy specular sheen — light bending across the glass surface. */
+.page-nav__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      130% 90% at 18% -20%,
+      rgba(255, 255, 255, 0.4),
+      transparent 55%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 40%);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Keep interactive children above the glass sheen. */
+.page-nav__inner > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hamburger toggle + mobile brand — desktop hides them, links show inline. */
@@ -325,13 +358,17 @@ h2[id] {
   margin-left: 0.35rem;
   padding-inline: 1rem;
   color: #122160;
-  background: var(--accent);
+  background: linear-gradient(180deg, #ffe08a, var(--accent) 55%, #f3b722);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 6px rgba(150, 90, 0, 0.2),
+    0 4px 12px rgba(0, 15, 45, 0.22);
 }
 
 .page-nav .page-nav__action:hover,
 .page-nav .page-nav__action:focus-visible {
   color: #122160;
-  background: #ffd35f;
+  background: linear-gradient(180deg, #ffe89e, #ffd35f 55%, #ffc22e);
 }
 
 .company-pill:nth-child(1) {
@@ -1320,10 +1357,19 @@ html.js .reveal {
     gap: 0.6rem;
     padding: 0.6rem 1rem;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 0;
-    background: rgba(1, 24, 58, 0.92);
-    box-shadow: 0 8px 24px rgba(0, 12, 36, 0.28);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(255, 255, 255, 0.03) 55%,
+        rgba(4, 26, 66, 0.12)
+      ),
+      rgba(9, 40, 96, 0.34);
+    box-shadow:
+      0 10px 28px rgba(0, 12, 36, 0.3),
+      inset 0 1px 1px rgba(255, 255, 255, 0.5);
   }
 
   .page-nav__brand {
@@ -1423,9 +1469,20 @@ html.js .reveal {
     align-items: stretch;
     gap: 0;
     padding: 0.4rem 0.6rem 0.8rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(1, 24, 58, 0.98);
-    box-shadow: 0 18px 34px rgba(0, 12, 36, 0.34);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.02) 30%,
+        rgba(4, 26, 66, 0.1)
+      ),
+      rgba(9, 40, 96, 0.55);
+    -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.06);
+    backdrop-filter: blur(26px) saturate(200%) brightness(1.06);
+    box-shadow:
+      0 18px 34px rgba(0, 12, 36, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);

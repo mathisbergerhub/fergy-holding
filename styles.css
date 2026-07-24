@@ -271,6 +271,7 @@ h2[id] {
 }
 
 .page-nav__inner {
+  position: relative;
   pointer-events: auto;
   display: flex;
   align-items: center;
@@ -287,6 +288,17 @@ h2[id] {
   box-shadow:
     0 14px 34px rgba(0, 15, 45, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Hamburger toggle — desktop hides it and shows the links inline. */
+.page-nav__toggle {
+  display: none;
+}
+
+.page-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .page-nav a {
@@ -1298,26 +1310,123 @@ html.js .reveal {
     padding-inline: 0.6rem;
   }
 
-  /* Wrap the links onto two rows so everything stays visible — no scrolling. */
+  /* Compact bar: menu button on the left, call to action on the right. */
   .page-nav__inner {
     width: 100%;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.4rem 0.45rem;
+  }
+
+  .page-nav__toggle {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 0.3rem;
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 160ms ease;
+  }
+
+  .page-nav__toggle:hover,
+  .page-nav__toggle:focus-visible {
+    outline: none;
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .page-nav__burger,
+  .page-nav__burger::before,
+  .page-nav__burger::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: #ffffff;
+    transition:
+      transform 200ms ease,
+      opacity 160ms ease;
+  }
+
+  .page-nav__burger {
+    position: relative;
+  }
+
+  .page-nav__burger::before,
+  .page-nav__burger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .page-nav__burger::before {
+    top: -6px;
+  }
+
+  .page-nav__burger::after {
+    top: 6px;
+  }
+
+  /* Toggle morphs into a close (X) when the menu is open. */
+  .page-nav.is-open .page-nav__burger {
+    background: transparent;
+  }
+
+  .page-nav.is-open .page-nav__burger::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .page-nav.is-open .page-nav__burger::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* The section links become a glass dropdown panel. */
+  .page-nav__links {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
     padding: 0.5rem;
-    border-radius: 1.4rem;
+    border-radius: 1.3rem;
+    background: rgba(8, 38, 88, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    backdrop-filter: blur(22px) saturate(180%);
+    box-shadow:
+      0 22px 48px rgba(0, 14, 40, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease,
+      visibility 200ms ease;
   }
 
-  .page-nav a {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.84rem;
+  .page-nav.is-open .page-nav__links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
-  /* Keep the call to action on its own full-width row for prominence. */
+  .page-nav__links a {
+    padding: 0.75rem 0.95rem;
+    border-radius: 0.85rem;
+    font-size: 0.94rem;
+  }
+
   .page-nav .page-nav__action {
-    flex-basis: 100%;
+    flex: 0 0 auto;
     margin-left: 0;
-    margin-top: 0.1rem;
   }
 
   .join-layout__actions,

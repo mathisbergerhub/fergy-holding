@@ -13,6 +13,9 @@ document.documentElement.classList.add("js");
   function setOpen(open) {
     nav.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+    // Lock background scroll while the full-screen sheet is open.
+    document.body.classList.toggle("nav-open", open);
   }
 
   toggle.addEventListener("click", () => {
@@ -35,6 +38,19 @@ document.documentElement.classList.add("js");
       toggle.focus();
     }
   });
+
+  // Close the sheet if the viewport grows past the mobile breakpoint.
+  const desktopQuery = window.matchMedia("(min-width: 641px)");
+  const handleBreakpoint = (event) => {
+    if (event.matches) {
+      setOpen(false);
+    }
+  };
+  if (desktopQuery.addEventListener) {
+    desktopQuery.addEventListener("change", handleBreakpoint);
+  } else if (desktopQuery.addListener) {
+    desktopQuery.addListener(handleBreakpoint);
+  }
 })();
 
 // Reveal sections on scroll. Falls back to fully visible when the browser

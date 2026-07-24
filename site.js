@@ -1,5 +1,42 @@
 document.documentElement.classList.add("js");
 
+// Mobile navigation menu (hamburger toggle -> glass dropdown panel).
+(function initNavMenu() {
+  const nav = document.querySelector(".page-nav");
+  const toggle = nav?.querySelector(".page-nav__toggle");
+  const menu = nav?.querySelector(".page-nav__links");
+
+  if (!nav || !toggle || !menu) {
+    return;
+  }
+
+  function setOpen(open) {
+    nav.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  toggle.addEventListener("click", () => {
+    setOpen(!nav.classList.contains("is-open"));
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!nav.contains(event.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav.classList.contains("is-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+})();
+
 // Reveal sections on scroll. Falls back to fully visible when the browser
 // lacks IntersectionObserver or the user prefers reduced motion.
 (function initReveal() {

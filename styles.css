@@ -260,28 +260,86 @@ h2[id] {
 
 .page-nav {
   position: sticky;
-  top: 0;
+  top: 0.85rem;
   z-index: 12;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(0, 38, 91, 0.96);
+  display: flex;
+  justify-content: center;
+  padding-inline: 0.9rem;
+  background: transparent;
+  border: none;
+  pointer-events: none;
 }
 
+/* Liquid glass: translucent refractive body, specular top-light, depth. */
 .page-nav__inner {
+  position: relative;
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  width: min(100% - 2rem, 960px);
-  min-height: 3.8rem;
-  margin: 0 auto;
+  gap: 0.2rem;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.4rem 0.45rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16),
+      rgba(255, 255, 255, 0.03) 42%,
+      rgba(4, 26, 66, 0.14)
+    ),
+    rgba(10, 46, 104, 0.26);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.08);
+  backdrop-filter: blur(26px) saturate(200%) brightness(1.08);
+  box-shadow:
+    0 16px 40px rgba(0, 15, 45, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -10px 22px rgba(2, 18, 55, 0.28);
+}
+
+/* Glossy specular sheen — light bending across the glass surface. */
+.page-nav__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      130% 90% at 18% -20%,
+      rgba(255, 255, 255, 0.4),
+      transparent 55%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 40%);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Keep interactive children above the glass sheen. */
+.page-nav__inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hamburger toggle + mobile brand — desktop hides them, links show inline. */
+.page-nav__toggle,
+.page-nav__brand {
+  display: none;
+}
+
+.page-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .page-nav a {
-  padding: 0.7rem 0.85rem;
+  padding: 0.62rem 0.9rem;
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.86rem;
   font-weight: 700;
   white-space: nowrap;
   transition:
@@ -300,13 +358,17 @@ h2[id] {
   margin-left: 0.35rem;
   padding-inline: 1rem;
   color: #122160;
-  background: var(--accent);
+  background: linear-gradient(180deg, #ffe08a, var(--accent) 55%, #f3b722);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 6px rgba(150, 90, 0, 0.2),
+    0 4px 12px rgba(0, 15, 45, 0.22);
 }
 
 .page-nav .page-nav__action:hover,
 .page-nav .page-nav__action:focus-visible {
   color: #122160;
-  background: #ffd35f;
+  background: linear-gradient(180deg, #ffe89e, #ffd35f 55%, #ffc22e);
 }
 
 .company-pill:nth-child(1) {
@@ -1281,24 +1343,170 @@ html.js .reveal {
     padding: 3.5rem 0;
   }
 
+  /* Full-width top bar (edge to edge), no floating capsule. */
+  .page-nav {
+    top: 0;
+    padding-inline: 0;
+  }
+
   .page-nav__inner {
+    position: static;
     width: 100%;
-    min-height: 3.5rem;
-    padding: 0 0.65rem;
+    max-width: none;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(255, 255, 255, 0.03) 55%,
+        rgba(4, 26, 66, 0.12)
+      ),
+      rgba(9, 40, 96, 0.34);
+    box-shadow:
+      0 10px 28px rgba(0, 12, 36, 0.3),
+      inset 0 1px 1px rgba(255, 255, 255, 0.5);
   }
 
-  .page-nav a {
-    padding: 0.65rem 0.7rem;
-    font-size: 0.8rem;
-  }
-
-  .page-nav a[href="#holding"],
-  .page-nav a[href="#contact"] {
-    display: none;
+  .page-nav__brand {
+    display: block;
+    order: 1;
+    margin-right: auto;
+    color: #ffffff;
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+    font-size: 1.02rem;
+    letter-spacing: -0.01em;
   }
 
   .page-nav .page-nav__action {
-    margin-left: auto;
+    order: 2;
+    flex: 0 0 auto;
+    margin-left: 0;
+    padding: 0.55rem 1rem;
+    font-size: 0.86rem;
+  }
+
+  .page-nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    order: 3;
+    flex: 0 0 auto;
+    width: 2.6rem;
+    height: 2.6rem;
+    padding: 0;
+    border: none;
+    border-radius: 0.7rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 160ms ease;
+  }
+
+  .page-nav__toggle:hover,
+  .page-nav__toggle:focus-visible {
+    outline: none;
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .page-nav__burger,
+  .page-nav__burger::before,
+  .page-nav__burger::after {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: #ffffff;
+    transition:
+      transform 200ms ease,
+      opacity 160ms ease;
+  }
+
+  .page-nav__burger {
+    position: relative;
+  }
+
+  .page-nav__burger::before,
+  .page-nav__burger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .page-nav__burger::before {
+    top: -6px;
+  }
+
+  .page-nav__burger::after {
+    top: 6px;
+  }
+
+  /* Toggle morphs into a close (X) when the menu is open. */
+  .page-nav.is-open .page-nav__burger {
+    background: transparent;
+  }
+
+  .page-nav.is-open .page-nav__burger::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .page-nav.is-open .page-nav__burger::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  /* Full-width dropdown list below the bar. */
+  .page-nav__links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.4rem 0.6rem 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.02) 30%,
+        rgba(4, 26, 66, 0.1)
+      ),
+      rgba(9, 40, 96, 0.55);
+    -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.06);
+    backdrop-filter: blur(26px) saturate(200%) brightness(1.06);
+    box-shadow:
+      0 18px 34px rgba(0, 12, 36, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease,
+      visibility 200ms ease;
+  }
+
+  .page-nav.is-open .page-nav__links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .page-nav__links a {
+    padding: 0.95rem 0.6rem;
+    border-radius: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.98rem;
+  }
+
+  .page-nav__links a:first-child {
+    border-top: none;
   }
 
   .join-layout__actions,

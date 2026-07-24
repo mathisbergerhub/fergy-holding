@@ -207,8 +207,29 @@
 
       <footer class="farewell__footer">
         <p>Cette page temporaire expirera le 6 ao&ucirc;t 2026 &agrave; 23&nbsp;h&nbsp;59.</p>
+        <button class="farewell__celine" type="button" data-celine-open>
+          Au revoir &mdash; version C&eacute;line
+        </button>
       </footer>
     </main>
+
+    <div class="celine" data-celine hidden role="dialog" aria-label="Au revoir, version Céline">
+      <button class="celine__close" type="button" data-celine-close aria-label="Fermer">
+        &times;
+      </button>
+      <div class="celine__stage">
+        <div class="celine__scroll" data-celine-scroll>
+          <p class="celine__title">Je ne vous oublie pas</p>
+          <!--
+            Collez ici les paroles de votre choix, une ligne par <p>.
+            (Le texte complet de la chanson est protégé par le droit d'auteur ;
+            n'ajoutez que ce que vous êtes en droit d'utiliser.)
+          -->
+          <p>&laquo;&nbsp;Je ne vous oublie pas&hellip;&nbsp;&raquo;</p>
+          <p class="celine__signature">Merci pour tout, Mathis</p>
+        </div>
+      </div>
+    </div>
 
     <noscript>
       <div class="noscript">

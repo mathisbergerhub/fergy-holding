@@ -1429,23 +1429,9 @@ html.js .reveal {
     padding: 3.5rem 0;
   }
 
-  /* Minimal top nav — compact on small screens; dropdown spans the width. */
+  /* No navigation bar on mobile. */
   .page-nav {
-    padding: 0.85rem 1rem 0;
-  }
-
-  .page-nav__brand {
-    font-size: 0.98rem;
-  }
-
-  .page-nav .page-nav__action {
-    padding: 0.55rem 1rem;
-    font-size: 0.86rem;
-  }
-
-  .page-nav__links {
-    left: 0;
-    min-width: 0;
+    display: none;
   }
 
   .join-layout__actions,

@@ -160,39 +160,5 @@ if (!checkExpiry()) {
     revealVideos("all", "");
   });
 
-  const celineOpen = document.querySelector("[data-celine-open]");
-  const celineClose = document.querySelector("[data-celine-close]");
-  const celine = document.querySelector("[data-celine]");
-  const celineScroll = document.querySelector("[data-celine-scroll]");
-
-  function openCeline() {
-    celine.hidden = false;
-    document.body.style.overflow = "hidden";
-
-    // Relance l'animation de défilement à chaque ouverture.
-    celineScroll.style.animation = "none";
-    void celineScroll.offsetHeight;
-    celineScroll.style.animation = "";
-
-    celineClose.focus();
-  }
-
-  function closeCeline() {
-    celine.hidden = true;
-    document.body.style.overflow = "";
-    celineOpen.focus();
-  }
-
-  if (celineOpen && celine && celineClose && celineScroll) {
-    celineOpen.addEventListener("click", openCeline);
-    celineClose.addEventListener("click", closeCeline);
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !celine.hidden) {
-        closeCeline();
-      }
-    });
-  }
-
   window.setInterval(checkExpiry, 60_000);
 }
